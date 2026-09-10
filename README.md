@@ -55,7 +55,9 @@ const el = await driver.executeScript('windows: findElementViaDotnetBridge',
 | `windows: findElementsViaDotnetBridge` | `using`, `value`, `contextElementId?` | Find all |
 | `windows: getPageSourceViaDotnetBridge` | `contextElementId?` | Dump the reflected tree as XML |
 
-Or set the `dotnetBridge: true` + `appTopLevelWindow` capabilities to attach at session start.
+Attach is a command, not a capability — start the session on the target window
+(`appTopLevelWindow` capability, or `switchToWindow` first), then call
+`windows: attachDotnetBridge`.
 
 ## Build from source
 
