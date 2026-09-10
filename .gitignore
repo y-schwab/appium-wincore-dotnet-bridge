@@ -1,0 +1,11 @@
+node_modules/
+build/
+native/plugin/*
+!native/plugin/plugin.json
+csharp/**/bin/
+csharp/**/obj/
+dotnet-bridge-agent*/**/bin/
+dotnet-bridge-agent*/**/obj/
+dotnet-bridge-agent/BridgeAgent/
+dotnet-bridge-profiler/ProfilerAgent/
+*.user

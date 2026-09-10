@@ -1,0 +1,6 @@
+{
+  "name": "dotnet-bridge",
+  "entry": "WincoreDotnetBridge.dll",
+  "type": "Wincore.DotNetBridge.Plugin",
+  "sdkVersion": "1.0.0"
+}

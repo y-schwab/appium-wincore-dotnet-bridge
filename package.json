@@ -1,0 +1,64 @@
+{
+  "name": "appium-wincore-dotnet-bridge",
+  "version": "1.0.0",
+  "description": "In-process .NET (WinForms / WPF / DevExpress) UI-tree bridge for appium-wincore-driver, as an installable Appium plugin",
+  "keywords": [
+    "appium",
+    "plugin",
+    "desktop",
+    "windows",
+    "dotnet",
+    "winforms",
+    "wpf",
+    "devexpress",
+    "automation",
+    "verisoft"
+  ],
+  "main": "build/lib/index.js",
+  "files": [
+    "build/lib/**/*",
+    "native/plugin/**/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "build:plugin": "dotnet publish csharp/WincoreDotnetBridge/WincoreDotnetBridge.csproj -c Release -o native/plugin/ && node scripts/assemble-native.js",
+    "build:x86-stub": "dotnet publish csharp/BridgeInjectorX86Stub/BridgeInjectorX86Stub.csproj -c Release -r win-x86 -o native/plugin/win-x86/ --self-contained",
+    "build:agent": "cd dotnet-bridge-agent && build.bat",
+    "build:agent-core": "dotnet publish dotnet-bridge-agent-core/BridgeAgentCore.csproj -c Release -r win-x64 -o native/plugin/ --self-contained false && dotnet publish dotnet-bridge-agent-core/BridgeAgentCore.csproj -c Release -r win-x86 -o native/plugin/win-x86/ --self-contained false",
+    "build:profiler": "cd dotnet-bridge-profiler && build.bat",
+    "build:all": "npm run build:agent && npm run build:profiler && npm run build:agent-core && npm run build:x86-stub && npm run build:plugin && npm run build",
+    "watch": "tsc -b --watch",
+    "lint": "eslint .",
+    "test:e2e": "npx vitest run --config vitest.e2e.config.ts"
+  },
+  "author": "Automate The Planet",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/verisoft-ai/appium-wincore-dotnet-bridge.git"
+  },
+  "peerDependencies": {
+    "appium": "^3.0.0-rc.2"
+  },
+  "dependencies": {
+    "@appium/base-plugin": "^3.3.3"
+  },
+  "appium": {
+    "pluginName": "wincore-dotnet-bridge",
+    "mainClass": "DotnetBridgePlugin"
+  },
+  "devDependencies": {
+    "@appium/eslint-config-appium-ts": "^2.0.3",
+    "@appium/tsconfig": "^1.1.0",
+    "@appium/types": "^1.1.0",
+    "@types/node": "^24.8.1",
+    "appium": "^3.0.0-rc.2",
+    "eslint": "^9.38.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.1",
+    "vitest": "^2.1.0",
+    "webdriverio": "^9.30.1"
+  }
+}
