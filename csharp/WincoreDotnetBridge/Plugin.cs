@@ -17,8 +17,8 @@ internal static class PluginPaths
 
 /// <summary>
 /// Server plugin for the .NET (WinForms / WPF / DevExpress) bridge — loaded by
-/// DesktopDriverServer's PluginLoader from this package's <c>native/plugin/</c>
-/// folder (on <c>DESKTOP_DRIVER_PLUGINS</c>). Unlike the Java bridge the reflected
+/// WincoreServer's PluginLoader from this package's <c>native/plugin/</c>
+/// folder (on <c>WINCORE_SERVER_PLUGINS</c>). Unlike the Java bridge the reflected
 /// tree is never auto-merged — <see cref="DotNetTreeProvider.AutoRouteStandardFind"/>
 /// and <see cref="DotNetTreeProvider.AutoSwapsPageSource"/> are false — so this
 /// plugin also contributes the explicit <c>*ViaDotnetBridge</c> command family.

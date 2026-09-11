@@ -8,7 +8,7 @@
     <AssemblyName>WincoreDotnetBridge</AssemblyName>
     <RootNamespace>Wincore.DotNetBridge</RootNamespace>
     <Version>1.0.0</Version>
-    <!-- Loaded into DesktopDriverServer via PluginLoader; never run standalone. -->
+    <!-- Loaded into WincoreServer via PluginLoader; never run standalone. -->
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 
@@ -18,7 +18,7 @@
          must NOT be copied into the plugin's output folder. TEMPORARY relative
          reference to the driver checkout's copy — switch to a NuGet PackageReference
          once WincoreServerSdk is published. -->
-    <ProjectReference Include="..\..\..\appium-desktop-driver\csharp\WincoreServerSdk\WincoreServerSdk.csproj">
+    <ProjectReference Include="../../../appium-wincore-driver/csharp/WincoreServerSdk/WincoreServerSdk.csproj">
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
