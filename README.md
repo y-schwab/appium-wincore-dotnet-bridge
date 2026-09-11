@@ -1,7 +1,7 @@
 # appium-wincore-dotnet-bridge
 
 In-process **.NET (WinForms / WPF / DevExpress)** UI-tree bridge for
-[appium-wincore-driver](https://github.com/verisoft-ai/appium-wincore-driver), as an installable
+[appium-wincore-driver](https://github.com/y-schwab/appium-wincore-driver), as an installable
 Appium plugin.
 
 ## The problem
@@ -16,7 +16,7 @@ Value pattern, or `HelpText`.
 A bridge DLL is injected into the target .NET process (Win32 `LoadLibrary`/`CreateRemoteThread`
 for .NET Framework; CoreCLR diagnostics-IPC profiler attach for .NET 5+) and reflects the live
 WinForms/WPF control tree over a loopback-TCP JSON protocol. The driver's server reaches it
-through a **tree provider** (`ITreeProvider`) contributed by this package's DesktopDriverServer
+through a **tree provider** (`ITreeProvider`) contributed by this package's WincoreServer
 plugin (`native/plugin/WincoreDotnetBridge.dll`).
 
 Unlike the Java bridge, the reflected tree is **never auto-merged** into the real UIA tree —
@@ -31,7 +31,7 @@ appium --use-plugins=wincore-dotnet-bridge
 ```
 
 Requires Appium 3 and `appium-wincore-driver`. The plugin registers its server-side tree
-provider by appending its `native/plugin/` directory to the `DESKTOP_DRIVER_PLUGINS`
+provider by appending its `native/plugin/` directory to the `WINCORE_SERVER_PLUGINS`
 environment variable at load, before any session starts.
 
 ## Usage
